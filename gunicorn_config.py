@@ -1,7 +1,10 @@
 import multiprocessing
+import os
 
 # Server socket
-bind = "127.0.0.1:8000"
+# Use the PORT environment variable provided by Render
+port = os.environ.get("PORT", 8000)
+bind = f"0.0.0.0:{port}"
 
 # Worker processes
 workers = multiprocessing.cpu_count() * 2 + 1
