@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: changichirp
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main:app -c gunicorn_config.py
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: INDEX_DIR
+        value: faiss_index
+      - key: PORT
+        value: 8000
